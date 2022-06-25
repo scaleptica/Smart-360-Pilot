@@ -25,4 +25,6 @@ has already been placed for you.
 VARIOUS SPORTING 360 VIDEOS AND THEIR OUTPUTS AFTER RUNNING THROUGH OUR CODE
 HAVE ALREADY BEEN GIVEN TO SEE IN THE 'RESULTS OF CODE FOLDER'
 
+Initially the face detection was performed using the "haarcascade_frontalcatface.xml", then in the later commits, the code was updated to use "Multi-task Cascaded Convolutional Networks (MTCNN)" instead. The requirements file consists of the python modules that proved to be the requisites for the project execution
+
 PS: The project was a group effort
