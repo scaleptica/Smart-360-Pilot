@@ -1,8 +1,10 @@
 import cv2
 import numpy as np
 import os
+from mtcnn.mtcnn import MTCNN
 
-def detectImg(img0):
+#detectImg(img0) is for trial purpose only
+'''def detectImg(img0):
     absolute_path = os.path.join(os.getcwd(), 'internalFiles', 'classifier.xml');
     faceCascade = cv2.CascadeClassifier(absolute_path)
 
@@ -28,18 +30,21 @@ def detectImg(img0):
         return "right"
     else:
         # print("no case")
-        return "center"
+        return "center"     '''
 
 def detectImgfirst():
-    absolute_path = os.path.join(os.getcwd(), 'internalFiles', 'classifier.xml');
-    faceCascade = cv2.CascadeClassifier(absolute_path)
+    #absolute_path = os.path.join(os.getcwd(), 'internalFiles', 'classifier.xml');
+    #faceCascade = cv2.CascadeClassifier(absolute_path)
+    detector = MTCNN()
 
-    path = os.path.join(os.getcwd(), 'internalFiles', 'splitFolder', '1.jpg');
+    path = os.path.join(os.getcwd(), 'internalFiles', 'splitFolder', '41.jpg');
     img = cv2.imread(path)
 
-    imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    faces = faceCascade.detectMultiScale(imgGray, 1.04, 5)
-    x, y, w, h = faces[0]
+    #imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    #faces = faceCascade.detectMultiScale(imgGray, 1.04, 5)
+    faces = detector.detect_faces(img)
+    
+    x, y, w, h = faces[0]['box']
     imgW = img.shape[1]
     # print(x)
     # print(imgW)
